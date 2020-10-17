@@ -15,8 +15,6 @@ if cursor.fetchone()[0]!=1 :
 
 
 
-tasks = []
-
 @app.route("/")
 def index():
     cursor.execute("SELECT * FROM tasks")
