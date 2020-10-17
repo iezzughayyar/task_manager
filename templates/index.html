@@ -1,0 +1,21 @@
+{% extends "layout.html"%}
+
+{% block body%}
+
+{% if tasks|length != 0 %}
+<h2>your tasks:</h2>
+{% endif %}
+{% if not tasks %}
+<h3 style="color:red;">NO TASKS</h3>
+{% endif %}
+
+<ul>
+{% for task in tasks %}
+<li>{{task[1]}}</li>
+{% endfor %}
+</ul>
+
+<a href="add">Create a anew task</a> <br>
+<a href="/delete">delete something</a> <br>
+<a href="/edit">edit something</a>
+{% endblock %}
