@@ -15,8 +15,6 @@ if cursor.fetchone()[0]!=1 :
 
 
 
-tasks = []
-
 @app.route("/")
 def index():
     cursor.execute("SELECT * FROM tasks")
@@ -56,13 +54,10 @@ def edit():
         tasks = cursor.fetchall()
         return render_template("edit.html", tasks = tasks)
     else:
-        #tasks.clear()
         cursor.execute("DELETE FROM tasks;")
         connection.commit()
         somehin = request.form
         for item in somehin.items():
-            #tasks.append(item[1])
-
             added = item[1]
             cursor.execute("INSERT OR IGNORE INTO tasks (task) VALUES (?);", (added,))
             connection.commit()
